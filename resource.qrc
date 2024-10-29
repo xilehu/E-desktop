@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/">
+        <file>topwidget/image/battery.png</file>
+        <file>topwidget/image/wifi.png</file>
+        <file>topwidget/style/default.qss</file>
+        <file>lockwidget/image/lock_down.png</file>
+        <file>lockwidget/image/locktop.png</file>
+        <file>lockwidget/image/locktop.png</file>
+        <file>lockwidget/image/camera.png</file>
+        <file>lockwidget/image/oled.png</file>
+        <file>lockwidget/style/default.qss</file>
+        <file>mainwidget/image/background_1.jpeg</file>
+    </qresource>
+</RCC>

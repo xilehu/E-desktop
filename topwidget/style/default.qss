@@ -1,0 +1,25 @@
+QWidget#topwidget {
+    background: transparent;
+}
+
+QLabel#sysTimeLbl {
+    font: normal bold 18px;
+    color: white;
+    text-align: bottom;
+}
+
+QLabel#wifiLbl {
+    image: url(:/topwidget/image/wifi.png);
+    min-width: 32px;
+    min-height: 32px;
+    max-width: 32px;
+    max-height: 32px;
+}
+
+QLabel#batteryLbl {
+    image: url(:/topwidget/image/battery.png);
+    min-width: 32px;
+    min-height: 32px;
+    max-width: 32px;
+    max-height: 32px;
+}
