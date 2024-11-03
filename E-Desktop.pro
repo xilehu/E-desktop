@@ -10,16 +10,22 @@ CONFIG += c++11
 
 SOURCES += \
     commontool.cpp \
+    launcherwidget/launcherwidget.cpp \
     lockwidget/lockwidget.cpp \
     main.cpp \
     mainwidget.cpp \
-    topwidget/topwidget.cpp
+    topwidget/topwidget.cpp \
+    userapp/cameraApp/cameraapp.cpp \
+    userwidget/userwidget.cpp
 
 HEADERS += \
     commontool.h \
+    launcherwidget/launcherwidget.h \
     lockwidget/lockwidget.h \
     mainwidget.h \
-    topwidget/topwidget.h
+    topwidget/topwidget.h \
+    userapp/cameraApp/cameraapp.h \
+    userwidget/userwidget.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

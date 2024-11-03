@@ -21,12 +21,10 @@ void MainWidget::initMainWidgetUi(void)
     m_pMainLayout = new QVBoxLayout(this);
     m_pStackedWidget = new QStackedWidget(this);
 
-    m_pLanuchWidget = new QWidget();
-    m_pLanuchLayout = new QVBoxLayout(m_pLanuchWidget);
-    m_pLanuchButton = new QPushButton(m_pLanuchWidget);
-    m_pLanuchButton->setText("home");
-    m_pLanuchLayout->addWidget(m_pLanuchButton);
-    m_pStackedWidget->addWidget(m_pLanuchWidget);
+
+    m_pLauncherWidget = new LauncherWidget(this);
+
+    m_pStackedWidget->addWidget(m_pLauncherWidget);
 
 
 
@@ -45,6 +43,7 @@ void MainWidget::initMainWidgetUi(void)
 
     setBackground(QPixmap(":/mainwidget/image/background_1.jpeg"));
 
+
 }
 
 void MainWidget::initMainWidgetCtrl(void)
@@ -58,7 +57,11 @@ void MainWidget::lockToLaunchChange()
     m_pStackedWidget->setCurrentIndex(0);
 }
 
+void MainWidget::systemTimeChange()
+{
+    QDateTime current = QDateTime::currentDateTime();
 
+}
 
 
 

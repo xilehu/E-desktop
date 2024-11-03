@@ -12,6 +12,11 @@
 #include <QScroller>
 #include <iostream>
 #include <QScrollBar>
+#include <QDebug>
+
+#include <functional>
+#include <iostream>
+
 #include "../commontool.h"
 #include "../topwidget/topwidget.h"
 

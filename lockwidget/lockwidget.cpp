@@ -6,7 +6,6 @@ LockWidget::LockWidget(QWidget *parent) : QWidget(parent)
     initLockWidgetCtrl();
 }
 
-
 void LockWidget::initLockWidgetUi(void)
 {
     m_pMainLayout = new QVBoxLayout(this);
@@ -35,6 +34,15 @@ void LockWidget::initLockWidgetUi(void)
     m_BodyWidget->setFixedHeight(550);
     m_pMainLayout->addWidget(m_BodyScrollArea);
     setLayout(m_pMainLayout);
+
+    m_pTopWidget->registerUpdateTimeCb([this](const QString &text) {
+        this->updateClockText(text);
+    });
+    m_pTopWidget->registerUpdateDateCb([this](const QString &text) {
+        this->updateDateText(text);
+    });
+
+
 }
 
 void LockWidget::initLockWidgetCtrl(void)
@@ -137,4 +145,12 @@ QWidget* LockWidget::bodyWidgetInit(void)
     return bodyWidget;
 }
 
+void LockWidget::updateDateText(const QString &text)
+{
+    m_pClock->setText(text);
+}
+void LockWidget::updateClockText(const QString &text)
+{
+    m_pDate->setText(text);
+}
 

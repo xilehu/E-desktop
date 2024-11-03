@@ -7,9 +7,12 @@
 #include <QVBoxLayout>
 #include <QScrollArea>
 #include <QStackedWidget>
+#include <QTimer>
+#include <QDateTime>
 
 #include <./lockwidget/lockwidget.h>
-//#include <./topwidget/topwidget.h>
+#include <../launcherwidget/launcherwidget.h>
+#include <./topwidget/topwidget.h>
 
 
 
@@ -31,16 +34,17 @@ private:
 
 private slots:
     void lockToLaunchChange();
+    void systemTimeChange();
 
 private:
+    QTimer *m_pTime;
 
+    TopWidget *m_pTopWidget;
     QVBoxLayout *m_pMainLayout;
     QStackedWidget *m_pStackedWidget;
 
-    QWidget *m_pLanuchWidget;
+    LauncherWidget *m_pLauncherWidget;
     QVBoxLayout *m_pLanuchLayout;
-    QPushButton *m_pLanuchButton;
-
 
     LockWidget *m_pLockWidget;
     QVBoxLayout *m_pLockLayout;
