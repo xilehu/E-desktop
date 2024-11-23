@@ -10,5 +10,21 @@
         <file>lockwidget/image/oled.png</file>
         <file>lockwidget/style/default.qss</file>
         <file>mainwidget/image/background_1.jpeg</file>
+        <file>userwidget/style/default.qss</file>
+        <file>quickwidget/style/default.qss</file>
+        <file>resources/style/default.qss</file>
+        <file>resources/image/cameraApp.png</file>
+        <file>resources/image/messageApp.png</file>
+        <file>resources/image/phoneApp.png</file>
+        <file>resources/image/bookApp.png</file>
+        <file>resources/image/clacApp.png</file>
+        <file>resources/image/googleApp.png</file>
+        <file>resources/image/mapApp.png</file>
+        <file>resources/image/ledApp.png</file>
+        <file>resources/image/musicApp.png</file>
+        <file>resources/image/pictureApp.png</file>
+        <file>resources/image/systemtoolApp.png</file>
+        <file>resources/image/talkApp.png</file>
+        <file>resources/image/videoApp.png</file>
     </qresource>
 </RCC>

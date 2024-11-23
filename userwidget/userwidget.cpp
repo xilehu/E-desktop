@@ -1,19 +1,8 @@
 #include "userwidget.h"
-
+#include <QDebug>
 UserWidget::UserWidget(QWidget *parent) : QWidget(parent)
 {
     initUserWidgetUi();
-//    cameraButton = new QPushButton(this);
-//    cameraButton->setText("Camera");
-//    addUserApp(cameraButton,"hello");
-//    auto a = new QPushButton(this);
-//    a->setText("sss");
-//    addUserApp(a,"hello");
-//delUserApp(cameraButton);
-//auto b = new QPushButton(this);
-//b->setText("bbb");
-//addUserApp(b,"hello");
-    //    findAppWidget(a);
 }
 
 int UserWidget::isUserWidgetFull()
@@ -27,20 +16,35 @@ int UserWidget::isUserWidgetFull()
 void UserWidget::initUserWidgetUi(void)
 {
     m_appWidgetCnt = 0;
-    m_pUserGridLayout = new QGridLayout(this);
+    m_pUserGridLayout = new QGridLayout();
     m_pUserGridLayout->setObjectName(QString::fromUtf8("m_pUserGridLayout"));
     m_userWidgetVector.resize(userAppRows);
+    m_pUserGridLayout->setVerticalSpacing(25);
     for (int i = 0; i < userAppRows; ++i) {
         m_userWidgetVector[i].resize(userAppCols);
         for (int j = 0; j < userAppCols; ++j) {
             QWidget* widget = new QWidget;
-            widget->setFixedSize(50, 50);  // 设置占位符的大小（可选）
-            widget->setStyleSheet("background-color: lightgray;");
+            widget->setObjectName("userAppWidget");
+            widget->setAttribute(Qt::WA_StyleSheet);
+            CommonTool::setStyleSheet(":/userwidget/style/default.qss",widget);
             // 将int和QWidget*的配对存入QVector
             m_userWidgetVector[i][j] = qMakePair(0, widget);
             m_pUserGridLayout->addWidget(widget, i, j);
         }
     }
+
+    auto userLayout = new QVBoxLayout();
+    userLayout->addLayout(m_pUserGridLayout);
+    auto indicatorWidget = new QWidget();
+    QHBoxLayout *hLayout = new QHBoxLayout();
+    hLayout->addStretch(1);
+    hLayout->addWidget(indicatorWidget);
+    hLayout->addStretch(1);
+    indicatorWidget->setObjectName("indicatorWidget");
+    CommonTool::setStyleSheet(":/userwidget/style/default.qss",indicatorWidget);
+    userLayout->addLayout(hLayout);
+    userLayout->setMargin(0);
+    setLayout(userLayout);
 }
 
 void UserWidget::addUserApp(QPushButton *app,const QString &appName)
@@ -54,6 +58,9 @@ void UserWidget::addUserApp(QPushButton *app,const QString &appName)
         emptyWidget->second->setLayout(Applayout);
         emptyWidget->first = 1;
         m_appWidgetCnt++;
+
+        QSize widgetSize = emptyWidget->second->size();
+        qDebug()<<"w x h "<<widgetSize;
     }
 }
 

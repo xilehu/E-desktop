@@ -6,14 +6,13 @@
 #include <QVector>
 #include <QPushButton>
 #include <QHBoxLayout>
+#include "../commontool.h"
 
 class UserWidget : public QWidget
 {
     Q_OBJECT
-
-    static constexpr int userAppRows = 6;
+    static constexpr int userAppRows = 5;
     static constexpr int userAppCols = 4;
-
 public:
     explicit UserWidget(QWidget *parent = nullptr);
     int isUserWidgetFull();
@@ -21,8 +20,6 @@ public:
     void addUserApp(QPushButton *app,const QString &appName);
     void delUserApp(QPushButton *app);
 
-
-//signals:
 private:
     void initUserWidgetUi(void);
     QPair<int, QWidget*>* getFirstEmptyWidget();

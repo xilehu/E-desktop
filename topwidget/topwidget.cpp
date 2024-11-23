@@ -17,22 +17,19 @@ void TopWidget::initTopWidgetUi()
     pbatteryLbl->setObjectName("batteryLbl");
 
     auto *pLayout = new QHBoxLayout;
-    pLayout->addSpacing(12);
+    pLayout->addSpacing(24);
     pLayout->addWidget(pSysTime);
     pLayout->addStretch();
     pLayout->addWidget(pWifiLbl);
     pLayout->addWidget(pbatteryLbl);
-    pLayout->addSpacing(12);
+    pLayout->addSpacing(24);
     pLayout->setContentsMargins(0, 8, 0, 8);
 
     setLayout(pLayout);
     setObjectName("topwidget");
 
-    QFile file(":/topwidget/style/default.qss");
-    if (file.open(QIODevice::ReadOnly)) {
-        this->setStyleSheet(file.readAll());
-        file.close();
-    }
+    CommonTool::setStyleSheet(":/topwidget/style/default.qss",this);
+
 
     QTimer *m_pSysTimer = new QTimer(this);
     connect(m_pSysTimer, &QTimer::timeout, this, &TopWidget::updateTime);

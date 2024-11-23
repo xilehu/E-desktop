@@ -11,7 +11,7 @@ void LockWidget::initLockWidgetUi(void)
     m_pMainLayout = new QVBoxLayout(this);
     m_pTopWidget = new TopWidget(this);
     m_pMainLayout->addWidget(m_pTopWidget);
-
+    m_pMainLayout->setSpacing(50);
 
     m_BodyScrollArea = new QScrollArea(this);
     m_BodyScrollArea->setWidgetResizable(true);
@@ -31,9 +31,13 @@ void LockWidget::initLockWidgetUi(void)
 
     m_BodyWidget = bodyWidgetInit();
     m_BodyScrollArea->setWidget(m_BodyWidget);
-    m_BodyWidget->setFixedHeight(550);
+    m_BodyWidget->setFixedHeight(580*2);
     m_pMainLayout->addWidget(m_BodyScrollArea);
+
+
+    m_pMainLayout->setMargin(0);
     setLayout(m_pMainLayout);
+
 
     m_pTopWidget->registerUpdateTimeCb([this](const QString &text) {
         this->updateClockText(text);
@@ -116,26 +120,26 @@ QWidget* LockWidget::bodyWidgetInit(void)
     m_pLedButton = new QPushButton(toolsWidget);
     m_pLedButton->setObjectName("ledButton");
 
-    toolsLayout->addSpacing(20);
+    toolsLayout->addSpacing(40);
     toolsLayout->addWidget(m_pCameraButton);
     toolsLayout->addStretch();
     toolsLayout->addWidget(m_pLedButton);
-    toolsLayout->addSpacing(20);
+    toolsLayout->addSpacing(40);
     toolsLayout->setContentsMargins(0, 8, 0, 8);
     toolsWidget->setLayout(toolsLayout);
 
     /*锁屏界面-主体Widget布局*/
     auto bodyLayout = new QVBoxLayout(bodyWidget);
-    bodyLayout->addSpacing(20);
+    bodyLayout->addSpacing(40);
     bodyLayout->addWidget(lockLabelWidget);
-    bodyLayout->addSpacing(10);
+    bodyLayout->addSpacing(20);
     bodyLayout->addWidget(dateWidget);
-    bodyLayout->addSpacing(10);
+    bodyLayout->addSpacing(20);
     bodyLayout->addWidget(clockWidget);
 
     bodyLayout->addStretch();
     bodyLayout->addWidget(toolsWidget);
-    bodyLayout->addSpacing(50);
+    bodyLayout->addSpacing(100);
     bodyLayout->setMargin(0);
     bodyLayout->setSpacing(0);
     bodyWidget->setLayout(bodyLayout);
@@ -147,10 +151,10 @@ QWidget* LockWidget::bodyWidgetInit(void)
 
 void LockWidget::updateDateText(const QString &text)
 {
-    m_pClock->setText(text);
+    m_pDate->setText(text);
 }
 void LockWidget::updateClockText(const QString &text)
 {
-    m_pDate->setText(text);
+    m_pClock->setText(text);
 }
 

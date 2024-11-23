@@ -10,6 +10,8 @@
 #include <QDate>
 #include <functional>
 
+#include "../commontool.h"
+
 class TopWidget : public QWidget
 {
     Q_OBJECT

@@ -5,9 +5,12 @@
 #include <QVBoxLayout>
 #include <QScrollArea>
 #include <QPushButton>
+#include <QScroller>
 #include <QDebug>
-#include <../topwidget/topwidget.h>
-#include <../userwidget/userwidget.h>
+#include <iostream>
+#include "../topwidget/topwidget.h"
+#include "../userwidget/userwidget.h"
+#include "../quickwidget/quickwidget.h"
 
 class LauncherWidget : public QWidget
 {
@@ -17,11 +20,10 @@ class LauncherWidget : public QWidget
 
 public:
     explicit LauncherWidget(QWidget *parent = nullptr);
-    void addQuickApp();
-    void delQuickApp();
-
-//    void addUserWidget();
-//signals:
+    void addUserApp(QPushButton *app,const QString &appName);
+    void delUserApp(QPushButton *app);
+    void addQuickApp(QPushButton *app,const QString &appName);
+    void delQuickApp(QPushButton *app);
 
 private:
     void initLauncherWidgetUi(void);
@@ -29,19 +31,18 @@ private:
 
 
 private:
-    int m_appWidgetNum;
+//    int m_appWidgetNum;
     QVBoxLayout *m_pLauncherLayout;
+
     TopWidget *m_pTopWidget;
 
     QScrollArea *m_pUserScrollArea;
     UserWidget *m_pUserWiget;
     QGridLayout *m_pUserGridLayout;
 
-    QWidget *m_pQuickWidget;
+    QuickWidget *m_pQuickWidget;
 
-    QPushButton *pushButton_8;
-    QPushButton *pushButton_9;
-    QPushButton *pushButton_10;
+
 
 };
 

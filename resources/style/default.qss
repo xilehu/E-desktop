@@ -1,0 +1,12 @@
+QPushButton#appBtn {
+    color: white;
+    border-radius: 20px;
+    padding: 20px;
+    min-width: 64px;
+    min-height: 64px;
+    max-width: 64px;
+    max-height: 64px;
+    background-position: center; /* 图像居中 */
+    background-repeat: no-repeat; /* 不重复图像 */
+
+}

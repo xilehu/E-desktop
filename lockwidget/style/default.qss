@@ -1,27 +1,27 @@
 QLabel#lockUpLbl {
     image: url(:/lockwidget/image/locktop.png);
-    min-width: 16px;
-    min-height: 16px;
-    max-width: 16px;
-    max-height: 16px;
+    min-width: 32px;
+    min-height: 32px;
+    max-width: 32px;
+    max-height: 32px;
 }
 
 QLabel#lockDownLbl {
     image: url(:/lockwidget/image/lock_down.png);
-    min-width: 16px;
-    min-height: 16px;
-    max-width: 16px;
-    max-height: 16px;
+    min-width: 32px;
+    min-height: 32px;
+    max-width: 32px;
+    max-height: 32px;
 }
 
 QLabel#dateLbl {
-    font: normal bold 18px;
+    font: normal bold 32px;
     color: white;
     text-align: bottom;
-    min-width: 18px;
-    min-height: 32px;
-    max-width: 128px;
-    max-height: 32px;
+    min-width: 32px;
+    min-height: 64px;
+    max-width: 256px;
+    max-height: 64px;
 }
 
 QLabel#clockLbl {
@@ -37,10 +37,10 @@ QPushButton#cameraButton
     image: url(:/lockwidget/image/camera.png);
     border: none; /* 移除边框，如果需要的话 */
     background-color: transparent; /* 设置背景为透明 */
-    min-width: 32px;
-    min-height: 32px;
-    max-width: 32px;
-    max-height: 32px;
+    min-width: 64px;
+    min-height: 64px;
+    max-width: 64px;
+    max-height: 64px;
 }
 
 QPushButton#ledButton
@@ -48,10 +48,10 @@ QPushButton#ledButton
     image: url(:/lockwidget/image/oled.png);
     border: none;
     background-color: transparent;
-    min-width: 32px;
-    min-height: 32px;
-    max-width: 32px;
-    max-height: 32px;
+    min-width: 64px;
+    min-height: 64px;
+    max-width: 64px;
+    max-height: 64px;
 }
 
 

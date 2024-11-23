@@ -1,4 +1,4 @@
-QT       += core gui
+QT       += core gui multimedia multimediawidgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -14,15 +14,18 @@ SOURCES += \
     lockwidget/lockwidget.cpp \
     main.cpp \
     mainwidget.cpp \
+    quickwidget/quickwidget.cpp \
     topwidget/topwidget.cpp \
     userapp/cameraApp/cameraapp.cpp \
     userwidget/userwidget.cpp
 
 HEADERS += \
+    appbutton.h \
     commontool.h \
     launcherwidget/launcherwidget.h \
     lockwidget/lockwidget.h \
     mainwidget.h \
+    quickwidget/quickwidget.h \
     topwidget/topwidget.h \
     userapp/cameraApp/cameraapp.h \
     userwidget/userwidget.h

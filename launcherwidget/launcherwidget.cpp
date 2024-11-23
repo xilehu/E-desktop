@@ -8,50 +8,71 @@ LauncherWidget::LauncherWidget(QWidget *parent) : QWidget(parent)
 void LauncherWidget::initLauncherWidgetUi(void)
 {
 
-    m_pLauncherLayout = new QVBoxLayout(this);
-    m_pLauncherLayout->setObjectName(QString::fromUtf8("m_pLauncherLayout"));
-
+    m_pLauncherLayout = new QVBoxLayout();
 
     m_pTopWidget = new TopWidget();
-
-
-
-
     m_pLauncherLayout->addWidget(m_pTopWidget);
 
-
-    m_pUserScrollArea = new QScrollArea(this);
-    m_pUserScrollArea->setObjectName(QString::fromUtf8("userScrollArea"));
+    m_pUserScrollArea = new QScrollArea();
+    m_pUserScrollArea->setAlignment(Qt::AlignCenter);
+    m_pUserScrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    m_pUserScrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     m_pUserScrollArea->setWidgetResizable(true);
-
-
     m_pUserWiget = new UserWidget();
-
     m_pUserScrollArea->setWidget(m_pUserWiget);
+    m_pUserWiget->setFixedWidth(400*2);
 
-    m_pLauncherLayout->addWidget(m_pUserScrollArea);
+    auto scroller = QScroller::scroller(m_pUserScrollArea);
+    scroller->grabGesture(m_pUserScrollArea, QScroller::LeftMouseButtonGesture);
 
-    m_pQuickWidget = new QWidget(this);
-    auto quickLayout = new QHBoxLayout(m_pQuickWidget);
+    auto properties = scroller->scrollerProperties();
+    properties.setScrollMetric(QScrollerProperties::SnapTime, 0.8);
+    properties.setScrollMetric(QScrollerProperties::MinimumVelocity, 1);
+    scroller->setScrollerProperties(properties);
 
-    pushButton_8 = new QPushButton(m_pQuickWidget);
-    pushButton_8->setObjectName(QString::fromUtf8("pushButton_8"));
+    auto *userLayout = new QHBoxLayout();
+    auto userspacerLeft = new QSpacerItem(20, 0, QSizePolicy::Fixed, QSizePolicy::Minimum);
+    userLayout->addItem(userspacerLeft);
 
-    quickLayout->addWidget(pushButton_8);
+    userLayout->addWidget(m_pUserScrollArea);
+    auto  *userspacerRight = new QSpacerItem(20, 0, QSizePolicy::Fixed, QSizePolicy::Minimum);
+    userLayout->addItem(userspacerRight);
+    m_pLauncherLayout->addLayout(userLayout);
+//    m_pLauncherLayout->addSpacing(30);
 
-    pushButton_9 = new QPushButton(m_pQuickWidget);
-    pushButton_9->setObjectName(QString::fromUtf8("pushButton_9"));
+    auto *quickLayout = new QHBoxLayout();
+    auto quickspacerLeft = new QSpacerItem(20, 0, QSizePolicy::Fixed, QSizePolicy::Minimum);
+    quickLayout->addItem(quickspacerLeft);
+    m_pQuickWidget = new QuickWidget();
+    quickLayout->addWidget(m_pQuickWidget);
+    auto  *quickspacerRight = new QSpacerItem(20, 0, QSizePolicy::Fixed, QSizePolicy::Minimum);
+    quickLayout->addItem(quickspacerRight);
+    m_pLauncherLayout->addLayout(quickLayout);
 
-    quickLayout->addWidget(pushButton_9);
-
-    pushButton_10 = new QPushButton(m_pQuickWidget);
-    pushButton_10->setObjectName(QString::fromUtf8("pushButton_10"));
-
-    quickLayout->addWidget(pushButton_10);
-
-
-    m_pLauncherLayout->addWidget(m_pQuickWidget);
+    m_pLauncherLayout->addSpacing(10);
+    m_pLauncherLayout->setMargin(0);
     this->setLayout(m_pLauncherLayout);
 
+    this->setStyleSheet("background-color: transparent;");
+
+}
+void LauncherWidget::addUserApp(QPushButton *app, const QString &appName)
+{
+    m_pUserWiget->addUserApp(app,appName);
+}
+
+void LauncherWidget::delUserApp(QPushButton *app)
+{
+    m_pUserWiget->delUserApp(app);
+}
+
+void LauncherWidget::addQuickApp(QPushButton *app, const QString &appName)
+{
+    m_pQuickWidget->addQuickApp(app,appName);
+}
+
+void LauncherWidget::delQuickApp(QPushButton *app)
+{
+    m_pQuickWidget->delQuickApp(app);
 }
 
